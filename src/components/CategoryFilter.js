@@ -1,85 +1,18 @@
-// import React, { useState } from "react";
-// import { TASKS } from "../data";
+import React from "react";
 
-// function CategoryFilter({ categories }) {
-//   const [selectedCategory1, setSelectedCategory1] = useState("All");
-//   const [selectedCategory2, setSelectedCategory2] = useState("All");
-  
-//   function handleCategorySelection1(category) {
-//     setSelectedCategory1(category);
-//   }
-  
-//   function handleCategorySelection2(category) {
-//     setSelectedCategory2(category);
-//   }
-  
-//   const filteredTasks = TASKS.filter(task =>
-//     (selectedCategory1 === "All" || task.category === selectedCategory1) &&
-//     (selectedCategory2 === "All" || task.category === selectedCategory2)
-//   );
-  
-//   return (
-//     <div className="categories">
-//       <h5>Category filters</h5>
-//       {categories.map((category) => (
-//         <button
-//           onClick={() => handleCategorySelection1(category)}
-//           key={category}
-//           className={selectedCategory1 === category ? "selected" : ""}
-//           value={category}
-//         >
-//           {category}
-//         </button>
-//       ))}
-//       {categories.map((category) => (
-//         <button
-//           onClick={() => handleCategorySelection2(category)}
-//           key={category}
-//           className={selectedCategory2 === category ? "selected" : ""}
-//           value={category}
-//         >
-//           {category}
-//         </button>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default CategoryFilter;
-
-
-
-
-
-
-
-
-import React, { useState } from "react";
-
-function CategoryFilter({ categories}) {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  function handleSelection(event) {
-    setSelectedCategory(event.target.value);
-  }
-
-
-
-  const filteredSelection =
-    selectedCategory === "All"
-      ? categories
-      : categories.filter((category) => category === selectedCategory);
+function CategoryFilter({ categories, selectedCategory, onSelectCategory }) {
+  const handleSelection = (category) => {
+    onSelectCategory(category);
+  };
 
   return (
     <div className="categories">
       <h5>Category filters</h5>
-      {/* render <button> elements for each category here */}
       {categories.map((category) => (
         <button
-          onClick={handleSelection}
+          onClick={() => handleSelection(category)}
           key={category}
           className={selectedCategory === category ? "selected" : ""}
-          value={category}
         >
           {category}
         </button>
@@ -89,6 +22,9 @@ function CategoryFilter({ categories}) {
 }
 
 export default CategoryFilter;
+
+
+
 
 
 
@@ -105,7 +41,41 @@ export default CategoryFilter;
 
 
 
+// import React, { useState } from "react";
 
+// function CategoryFilter({ categories}) {
+//   const [selectedCategory, setSelectedCategory] = useState("All");
+
+//   function handleSelection(event) {
+//     setSelectedCategory(event.target.value);
+//   }
+
+
+
+//   const filteredSelection =
+//     selectedCategory === "All"
+//       ? categories
+//       : categories.filter((category) => category === selectedCategory);
+
+//   return (
+//     <div className="categories">
+//       <h5>Category filters</h5>
+//       {/* render <button> elements for each category here */}
+//       {categories.map((category) => (
+//         <button
+//           onClick={handleSelection}
+//           key={category}
+//           className={selectedCategory === category ? "selected" : ""}
+//           value={category}
+//         >
+//           {category}
+//         </button>
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default CategoryFilter;
 
 
 
